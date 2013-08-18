@@ -33,7 +33,8 @@ execute_system_command    (const char *command)
 static void
 append_port(SerialPortList *serial_port_list, const char *port)
 {
-	char **ports = realloc(serial_port_list->ports, serial_port_list->size + 1);
+	char **ports = realloc(serial_port_list->ports,
+		sizeof(char *) * (serial_port_list->size + 1));
 	RETURN_IF_NULL(ports);
 	serial_port_list->ports = ports;
 	int len = strlen(port);
